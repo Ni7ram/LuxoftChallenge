@@ -1,3 +1,9 @@
+Features added:
+
+- Presenter w/ ViewModels
+- DateHelper
+- Protocols
+
 <p align="center">
     <img 
         src="https://github.com/Ni7ram/LuxoftChallenge/blob/master/App.png?raw=true" 
