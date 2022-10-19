@@ -99,6 +99,8 @@
 		FE4774832900A0020084CBF9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FECB508E29008F4200C1024B /* TableCells */,
+				FE47748A2900A21B0084CBF9 /* ViewModels */,
 				FE4774842900A0080084CBF9 /* TableView */,
 			);
 			path = Scenes;
@@ -132,6 +134,7 @@
 		FECB5083290087BA00C1024B /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				FECB5086290087FC00C1024B /* Data */,
 				FECB5084290087D000C1024B /* DataLayer.swift */,
 			);
 			path = DataLayer;
@@ -149,9 +152,7 @@
 		FECB508D29008F3800C1024B /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				FE47748A2900A21B0084CBF9 /* ViewModels */,
 				FE4774832900A0020084CBF9 /* Scenes */,
-				FECB508E29008F4200C1024B /* TableCells */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 				FE4774872900A1C00084CBF9 /* Helpers */,
 				FECB509129009A7800C1024B /* Protocols */,
 				FECB508D29008F3800C1024B /* UI */,
-				FECB5086290087FC00C1024B /* Data */,
 				FECB5083290087BA00C1024B /* DataLayer */,
 				FEF93CA52900875500E4E221 /* Models */,
 				FEF93C752900861E00E4E221 /* AppDelegate.swift */,
