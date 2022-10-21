@@ -1,9 +1,6 @@
-//
 //  DataLayer.swift
 //  Challenge
-//
 //  Created by Martin Cardozo on 19/10/2022.
-//
 
 import Foundation
 
@@ -12,7 +9,9 @@ struct DataLayer: DataLayerProtocol {
         guard let itemData = loadJSONData(filename: filename) else { return nil }
         return parse(jsonData: itemData)
     }
-    
+}
+
+extension DataLayer {
     private func loadJSONData(filename: String) -> Data? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             return nil
@@ -22,11 +21,9 @@ struct DataLayer: DataLayerProtocol {
     
     private func parse(jsonData: Data) -> [ItemModel]? {
         do {
-            let decodedData = try JSONDecoder().decode([ItemModel].self,
-                                                       from: jsonData)
-            return decodedData
+            return try JSONDecoder().decode([ItemModel].self, from: jsonData)
         } catch {
-            print("decode error")
+            print(Errors.DECODE_ERROR)
         }
         return nil
     }
