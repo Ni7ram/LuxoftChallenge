@@ -10,6 +10,8 @@ Features:
 - Protocols
 - DateHelper
 
+While this architecture might seem an overkill, the intended idea was to show some OOP and concepts knowledge.
+
 
 <p align="center">
     <img 
