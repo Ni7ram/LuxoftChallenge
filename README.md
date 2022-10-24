@@ -1,9 +1,9 @@
-Luxoft Challenge
+##Luxoft Challenge
 
 Make an app that loads a local JSON, and display it in a tableView.
-Full instructions: https://gist.github.com/RRUIZ5Lux/7ac9cb5a3466e3c8b216144c0f918e66
+> Full instructions: https://gist.github.com/RRUIZ5Lux/7ac9cb5a3466e3c8b216144c0f918e66
 
-Features:
+###Features:
 - MVP
 - Mappers, viewModels
 - DataLayer
