@@ -7,7 +7,7 @@ import UIKit
 final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewProtocol {
     
     // DEPENDENCIES
-    private let presenter: PresenterProtocol
+    private var presenter: PresenterProtocol
     
     // VARs
     private var items: [ItemViewModel] = []
@@ -15,28 +15,22 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // IBs
     @IBOutlet weak var tasksTableView: UITableView!
     
-    convenience init?(coder: NSCoder, presenter: PresenterProtocol) {
+    init?(coder: NSCoder, presenter: PresenterProtocol) {
         self.presenter = presenter
+        super.init(coder: coder)
     }
     
-//    convenience init?(coder: NSCoder) {
-//        self.init(coder: coder)
-//        self.presenter = presenter
-//        self.presenter?.setView(self)
-//    }
+    required init?(coder: NSCoder) {
+        fatalError("Initialize this class with init(coder:presenter)")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTable()
-        getData()
     }
     
-    private func getData() {
-        items = presenter.getViewModels()
-    }
-    
-    func addElements() {
-        tasksTableView.reloadData()
+    func addItemsToShow(_ items: [ItemViewModel]) {
+        self.items = items
     }
 }
 

@@ -14,7 +14,7 @@
 		FE4774942900DD2B0084CBF9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4774932900DD2B0084CBF9 /* Errors.swift */; };
 		FE477497290119820084CBF9 /* View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF93C7B2900861E00E4E221 /* View.storyboard */; };
 		FE895E6629072371009EE853 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE895E6529072371009EE853 /* ViewProtocol.swift */; };
-		FECB5085290087D000C1024B /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECB5084290087D000C1024B /* DataLayer.swift */; };
+		FECB5085290087D000C1024B /* LocalDataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECB5084290087D000C1024B /* LocalDataLayer.swift */; };
 		FECB50892900888100C1024B /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECB50882900888100C1024B /* ItemModel.swift */; };
 		FECB508C29008BB200C1024B /* Item.json in Resources */ = {isa = PBXBuildFile; fileRef = FECB508B29008BB200C1024B /* Item.json */; };
 		FECB50902900903A00C1024B /* myTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECB508F2900903A00C1024B /* myTableViewCell.swift */; };
@@ -43,7 +43,7 @@
 		FE4774902900A3D50084CBF9 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
 		FE4774932900DD2B0084CBF9 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		FE895E6529072371009EE853 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
-		FECB5084290087D000C1024B /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
+		FECB5084290087D000C1024B /* LocalDataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataLayer.swift; sourceTree = "<group>"; };
 		FECB50882900888100C1024B /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		FECB508B29008BB200C1024B /* Item.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Item.json; sourceTree = "<group>"; };
 		FECB508F2900903A00C1024B /* myTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				FECB5086290087FC00C1024B /* JSON */,
-				FECB5084290087D000C1024B /* DataLayer.swift */,
+				FECB5084290087D000C1024B /* LocalDataLayer.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 				FECB509329009A8700C1024B /* DataLayerProtocol.swift in Sources */,
 				FE895E6629072371009EE853 /* ViewProtocol.swift in Sources */,
 				FE47748C2900A2270084CBF9 /* ItemViewModel.swift in Sources */,
-				FECB5085290087D000C1024B /* DataLayer.swift in Sources */,
+				FECB5085290087D000C1024B /* LocalDataLayer.swift in Sources */,
 				FEF93C762900861E00E4E221 /* AppDelegate.swift in Sources */,
 				FE4774942900DD2B0084CBF9 /* Errors.swift in Sources */,
 				FE4774912900A3D50084CBF9 /* PresenterProtocol.swift in Sources */,

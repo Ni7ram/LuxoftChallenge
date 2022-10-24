@@ -6,8 +6,6 @@ class Presenter: PresenterProtocol {
     
     // DEPENDENCIES
     private var repository: DataLayerProtocol?
-    
-    // VARS
     var view: ViewProtocol?
     
     init(repository: DataLayerProtocol) {
@@ -16,13 +14,18 @@ class Presenter: PresenterProtocol {
     
     func setView(_ view: ViewProtocol) {
         self.view = view
+        let viewModels = getViewModels()
+        view.addItemsToShow(viewModels)
     }
-    
-    func getViewModels() -> [ItemViewModel] {
-        guard let itemModels = repository?.getModels(filename: "Item") else { return [] }
+}
+
+extension Presenter {
+    private func getViewModels() -> [ItemViewModel] {
+        // 1. Get models
+        guard let itemModels = repository?.getModels() else { return [] }
         
+        // 2. Map to ViewModels
         var viewModels: [ItemViewModel] = []
-        
         for model in itemModels {
             viewModels.append(mapDTOtoViewModel(model))
         }
@@ -30,7 +33,7 @@ class Presenter: PresenterProtocol {
         return viewModels
     }
     
-    func mapDTOtoViewModel(_ model: ItemModel) -> ItemViewModel {
+    private func mapDTOtoViewModel(_ model: ItemModel) -> ItemViewModel {
         ItemViewModel(title: model.title ?? "", description: model.details?.description ?? "", day: DateHelper().getDayName(model.details?.day ?? 0))
     }
 }
