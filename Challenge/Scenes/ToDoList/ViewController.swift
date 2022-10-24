@@ -4,32 +4,39 @@
 
 import UIKit
 
-final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewProtocol {
     
     // DEPENDENCIES
-    private var dataLayer: DataLayerProtocol?
-    private var presenter: PresenterProtocol?
+    private let presenter: PresenterProtocol
     
     // VARs
-    private var itemModels: [ItemModel]?
+    private var items: [ItemViewModel] = []
     
     // IBs
     @IBOutlet weak var tasksTableView: UITableView!
     
-    convenience init?(coder: NSCoder, dataLayer: DataLayerProtocol, presenter: PresenterProtocol) {
-        self.init(coder: coder)
-        self.dataLayer = dataLayer
+    convenience init?(coder: NSCoder, presenter: PresenterProtocol) {
         self.presenter = presenter
     }
     
+//    convenience init?(coder: NSCoder) {
+//        self.init(coder: coder)
+//        self.presenter = presenter
+//        self.presenter?.setView(self)
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
         initializeTable()
+        getData()
     }
     
     private func getData() {
-        itemModels = dataLayer?.getModels(filename: "Item") ?? []
+        items = presenter.getViewModels()
+    }
+    
+    func addElements() {
+        tasksTableView.reloadData()
     }
 }
 
@@ -37,18 +44,16 @@ extension ViewController {
     private func initializeTable() {
         tasksTableView.dataSource = self
         tasksTableView.delegate = self
-        tasksTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let models = itemModels, models.count > 0 else { return 0 }
-        return models.count
+        guard items.count > 0 else { return 0 }
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myTableCell", for: indexPath) as! myTableViewCell
-        let viewModel = presenter!.mapDTOtoViewModel((itemModels?[indexPath.row])!)
-        cell.fillWithContent(viewModel)
+        cell.fillWithContent(items[indexPath.row])
         return cell
     }
 }

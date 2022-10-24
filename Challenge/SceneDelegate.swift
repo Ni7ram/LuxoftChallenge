@@ -16,9 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
                 
         /// 3. Create a view hierarchy programmatically
-        let storyBoard = UIStoryboard(name: "View", bundle: nil)
-        let vc = storyBoard.instantiateInitialViewController(creator: { coder in
-            ViewController(coder: coder, dataLayer: DataLayer(), presenter: Presenter())
+        let vc = UIStoryboard(name: "View", bundle: nil).instantiateInitialViewController(creator: { coder in
+            
+            // CREATE
+            let presenter = Presenter(repository: DataLayer())
+            let vc = ViewController(coder: coder)
+            
+            // AND LINK
+            presenter.view = vc!
+            vc?.presenter = presenter
+            
+            return vc
         })
         
         guard let vc = vc else { fatalError("Problem creating the main ViewController.") }
