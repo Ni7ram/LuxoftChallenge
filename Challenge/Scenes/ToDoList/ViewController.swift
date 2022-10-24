@@ -4,17 +4,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // DEPENDENCIES
-    var dataLayer: DataLayerProtocol?
-    var presenter: PresenterProtocol?
+    private var dataLayer: DataLayerProtocol?
+    private var presenter: PresenterProtocol?
     
     // VARs
     private var itemModels: [ItemModel]?
     
     // IBs
     @IBOutlet weak var tasksTableView: UITableView!
+    
+    convenience init?(coder: NSCoder, dataLayer: DataLayerProtocol, presenter: PresenterProtocol) {
+        self.init(coder: coder)
+        self.dataLayer = dataLayer
+        self.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +29,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func getData() {
-        itemModels = dataLayer?.getModel(filename: "Item") ?? []
+        itemModels = dataLayer?.getModels(filename: "Item") ?? []
     }
-    
+}
+
+extension ViewController {
     private func initializeTable() {
         tasksTableView.dataSource = self
         tasksTableView.delegate = self
         tasksTableView.reloadData()
     }
-}
-
-extension ViewController {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let models = itemModels, models.count > 0 else { return 0 }
         return models.count

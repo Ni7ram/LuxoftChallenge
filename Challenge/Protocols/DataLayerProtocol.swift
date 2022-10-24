@@ -3,5 +3,5 @@
 //  Created by Martin Cardozo on 19/10/2022.
 
 protocol DataLayerProtocol {
-    func getModel(filename: String) -> [ItemModel]?
+    func getModels(filename: String) -> [ItemModel]?
 }

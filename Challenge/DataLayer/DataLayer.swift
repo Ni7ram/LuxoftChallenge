@@ -5,13 +5,13 @@
 import Foundation
 
 struct DataLayer: DataLayerProtocol {
-    func getModel(filename: String) -> [ItemModel]? {
+    func getModels(filename: String) -> [ItemModel]? {
         guard let itemData = loadJSONData(filename: filename) else { return nil }
         return parse(jsonData: itemData)
     }
 }
 
-extension DataLayer {
+fileprivate extension DataLayer {
     private func loadJSONData(filename: String) -> Data? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             return nil
