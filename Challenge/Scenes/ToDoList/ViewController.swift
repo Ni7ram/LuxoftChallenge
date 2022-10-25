@@ -21,7 +21,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     required init?(coder: NSCoder) {
-        fatalError("Initialize this class with init(coder:presenter)")
+        fatalError("Initialize this class with init(coder:presenter:)")
     }
 
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         initializeTable()
     }
     
-    func addItemsToShow(_ items: [ItemViewModel]) {
+    func showItems(_ items: [ItemViewModel]) {
         self.items = items
     }
 }
@@ -38,6 +38,8 @@ extension ViewController {
     private func initializeTable() {
         tasksTableView.dataSource = self
         tasksTableView.delegate = self
+        // TODO: Set loader image
+        tasksTableView.backgroundView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +49,7 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myTableCell", for: indexPath) as! myTableViewCell
-        cell.fillWithContent(items[indexPath.row])
+        cell.recycleCellWith(items[indexPath.row])
         return cell
     }
 }

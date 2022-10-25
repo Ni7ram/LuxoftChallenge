@@ -5,5 +5,5 @@
 import Foundation
 
 protocol ViewProtocol {
-    func addItemsToShow(_ items: [ItemViewModel])
+    func showItems(_ items: [ItemViewModel])
 }

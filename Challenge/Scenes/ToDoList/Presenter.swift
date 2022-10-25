@@ -5,24 +5,27 @@
 class Presenter: PresenterProtocol {
     
     // DEPENDENCIES
-    private var repository: DataLayerProtocol?
-    var view: ViewProtocol?
+    private var repository: DataLayerProtocol
+    var view: ViewProtocol? {
+        didSet {
+            displayData()
+        }
+    }
     
     init(repository: DataLayerProtocol) {
         self.repository = repository
     }
-    
-    func setView(_ view: ViewProtocol) {
-        self.view = view
-        let viewModels = getViewModels()
-        view.addItemsToShow(viewModels)
-    }
 }
 
 extension Presenter {
+    private func displayData() {
+        let viewModels = getViewModels()
+        view?.showItems(viewModels)
+    }
+    
     private func getViewModels() -> [ItemViewModel] {
         // 1. Get models
-        guard let itemModels = repository?.getModels() else { return [] }
+        let itemModels = repository.getModels()
         
         // 2. Map to ViewModels
         var viewModels: [ItemViewModel] = []

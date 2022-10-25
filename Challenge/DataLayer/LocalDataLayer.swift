@@ -7,23 +7,23 @@ import Foundation
 struct LocalDataLayer: DataLayerProtocol {
     private let LOCAL_PATH = "Item"
     
-    func getModels() -> [ItemModel]? {
-        guard let models = loadJSONData(filename: LOCAL_PATH) else { return nil }
+    func getModels() -> [ItemModel] {
+        guard let models = parseJSON(filename: LOCAL_PATH) else { return [] }
         return models
     }
 }
 
 fileprivate extension LocalDataLayer {
-    private func loadJSONData(filename: String) -> [ItemModel]? {
+    private func parseJSON(filename: String) -> [ItemModel]? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             return nil
         }
         let data = try? Data(contentsOf: url)
-        guard let parsedData = parse(jsonData: data!) else { return [] }
-        return parsedData
+        guard let itemModels = decode(jsonData: data!) else { return [] }
+        return itemModels
     }
     
-    private func parse(jsonData: Data) -> [ItemModel]? {
+    private func decode(jsonData: Data) -> [ItemModel]? {
         do {
             return try JSONDecoder().decode([ItemModel].self, from: jsonData)
         } catch {
@@ -32,4 +32,3 @@ fileprivate extension LocalDataLayer {
         return nil
     }
 }
-

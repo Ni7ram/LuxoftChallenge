@@ -16,23 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
                 
         /// 3. Create a view hierarchy programmatically
+        let presenter = Presenter(repository: LocalDataLayer())
         let vc = UIStoryboard(name: "View", bundle: nil).instantiateInitialViewController(creator: { coder in
-            
-            let presenter = Presenter(repository: LocalDataLayer())
-            let vc = ViewController(coder: coder, presenter: presenter)
-            presenter.setView(vc!)
-            
-            return vc
+            ViewController(coder: coder, presenter: presenter)
         })
         
         guard let vc = vc else { fatalError("Problem creating the main ViewController.") }
-        
+        presenter.view = vc
+
+        /// 4. Display
         let navigation = UINavigationController(rootViewController: vc)
-                
-        /// 4. Set the root view controller of the window with your view controller
         window.rootViewController = navigation
-                
-        /// 5. Set the window and call makeKeyAndVisible()
         self.window = window
         window.makeKeyAndVisible()
     }
