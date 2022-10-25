@@ -7,8 +7,8 @@ import Foundation
 struct LocalDataLayer: DataLayerProtocol {
     private let LOCAL_PATH = "Item"
     
-    func getModels() -> [ItemModel] {
-        guard let models = parseJSON(filename: LOCAL_PATH) else { return [] }
+    func getModels() -> [ItemModel]? {
+        guard let models = parseJSON(filename: LOCAL_PATH) else { return nil }
         return models
     }
 }
@@ -32,3 +32,10 @@ fileprivate extension LocalDataLayer {
         return nil
     }
 }
+
+struct MockLocalDataLayer: DataLayerProtocol {
+    func getModels() -> [ItemModel]? {
+        return nil
+    }
+}
+

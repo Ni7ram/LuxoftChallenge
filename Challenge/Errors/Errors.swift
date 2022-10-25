@@ -5,4 +5,5 @@
 internal enum Errors: Error {
     case DECODE_ERROR
     case DTO_MAPPING_ERROR
+    case SERVICE_ERROR
 }

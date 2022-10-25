@@ -25,7 +25,7 @@ extension Presenter {
     
     private func getViewModels() -> [ItemViewModel] {
         // 1. Get models
-        let itemModels = repository.getModels()
+        guard let itemModels = repository.getModels() else { print(Errors.SERVICE_ERROR); return [] }
         
         // 2. Map to ViewModels
         var viewModels: [ItemViewModel] = []
