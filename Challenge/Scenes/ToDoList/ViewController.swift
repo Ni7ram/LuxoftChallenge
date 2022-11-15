@@ -42,10 +42,9 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 extension ViewController {
     private func initializeTable() {
+        // Data binding
         tasksTableView.dataSource = self
         tasksTableView.delegate = self
-        // TODO: Set loader image
-        tasksTableView.backgroundView = UIView()
         
         // Pull to refresh
         tasksTableView.refreshControl = UIRefreshControl()
