@@ -32,6 +32,12 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func showItems(_ items: [ItemViewModel]) {
         self.items = items
     }
+    
+    @objc private func refreshContent() {
+        items.append(contentsOf: presenter.loadMoreItems())
+        tasksTableView.refreshControl?.endRefreshing()
+        tasksTableView.reloadData()
+    }
 }
 
 extension ViewController {
@@ -40,6 +46,11 @@ extension ViewController {
         tasksTableView.delegate = self
         // TODO: Set loader image
         tasksTableView.backgroundView = UIView()
+        
+        // Pull to refresh
+        tasksTableView.refreshControl = UIRefreshControl()
+        tasksTableView.refreshControl?.tintColor = .white
+        tasksTableView.refreshControl?.addTarget(self, action: #selector(self.refreshContent), for: .valueChanged)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

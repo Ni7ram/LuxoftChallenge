@@ -4,4 +4,5 @@
 
 protocol PresenterProtocol {
     var view: ViewProtocol? { get set }
+    func loadMoreItems() -> [ItemViewModel]
 }

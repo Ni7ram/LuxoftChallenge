@@ -15,6 +15,10 @@ class Presenter: PresenterProtocol {
     init(repository: DataLayerProtocol) {
         self.repository = repository
     }
+    
+    func loadMoreItems() -> [ItemViewModel] {
+        return getViewModels()
+    }
 }
 
 extension Presenter {
