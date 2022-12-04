@@ -16,11 +16,12 @@ class Presenter: PresenterProtocol {
         self.repository = repository
     }
     
-    func loadMoreItems() -> [ItemViewModel] {
+    func fetchItems() -> [ItemViewModel] {
         return getViewModels()
     }
 }
 
+// MARK: Private Methods
 extension Presenter {
     private func displayData() {
         let viewModels = getViewModels()

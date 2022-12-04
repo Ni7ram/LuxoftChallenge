@@ -33,6 +33,7 @@ fileprivate extension LocalDataLayer {
     }
 }
 
+// TODO: Move to a separate file.
 struct MockLocalDataLayer: DataLayerProtocol {
     func getModels() -> [ItemModel]? {
         return nil
