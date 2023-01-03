@@ -33,7 +33,7 @@ extension Presenter {
         guard let itemModels = repository.getModels() else { print(Errors.SERVICE_ERROR); return [] }
         
         // 2. Map to ViewModels
-        var viewModels: [ItemViewModel] = []
+        var viewModels = [ItemViewModel]()
         for model in itemModels {
             viewModels.append(mapDTOtoViewModel(model))
         }

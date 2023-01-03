@@ -7,7 +7,7 @@ import UIKit
 final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewProtocol {
     
     private var presenter: PresenterProtocol
-    private var items: [ItemViewModel] = []
+    private var items = [ItemViewModel]()
     private let tableViewCellID = "myTableCell"
     @IBOutlet weak var tasksTableView: UITableView!
     
